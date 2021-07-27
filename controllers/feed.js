@@ -113,8 +113,8 @@ exports.updatePost = (req, res, next) => {
                 // })
                 console.log(404, 'Could not find post');
             }
-            if(post.creator !== req.userId){
-                return res.status(403).json({
+            if(post.creator.toString() !== req.userId){
+                return res.status(403).JSON.stringify({
                     message: 'Not authorized!',
                 })
             }
@@ -148,6 +148,11 @@ exports.deletePost = (req, res, next) => {
             if (!post) {
                 return res.status(404).json({
                     message: 'Could not find post.',
+                })
+            }
+            if(post.creator.toString() !== req.userId){
+                return res.status(403).JSON.stringify({
+                    message: 'Not authorized!',
                 })
             }
             clearImage(post.imageUrl);
