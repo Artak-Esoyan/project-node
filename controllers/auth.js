@@ -80,3 +80,52 @@ exports.login = (req, res, next) => {
             }
         })
 }
+
+exports.getUserStatus = (req, res, next) => {
+    User.findById(req.userId)
+        .then(user => {
+            if(!user) {
+                return res.status(404).json({
+                    message: 'User not found',
+                    errors: user.array()
+                });
+            }
+            res.status(200).json({
+                status: user.status,
+
+            })
+        })
+        .catch(err => {
+            if(!err) {
+               console.log('get',err)
+            }
+            next(err);
+        });
+}
+
+
+exports.updateUserStatus = (req, res, next) => {
+    const newStatus = req.body.status;
+    User.findById(req.userId)
+        .then(user => {
+            if(!user) {
+                return res.status(404).json({
+                    message: 'User not found',
+                    errors: user.array()
+                });
+            }
+            user.status = newStatus;
+            return user.save();
+        })
+        .then(result => {
+            res.status(200).json({
+               message: 'User status updated.'
+            });
+        })
+        .catch(err => {
+            if(!err) {
+                console.log('up st..',err)
+            }
+            next(err);
+        });
+};
