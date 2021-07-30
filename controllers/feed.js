@@ -20,11 +20,11 @@ exports.getPosts = async (req, res, next) => {
             posts: posts,
             totalItems: totalItems
         });
-    } catch (error) {
-        if(!error) {
-            return '500';
-        }
-        next(error);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'uneq sxal',
+        })
     }
 };
 
