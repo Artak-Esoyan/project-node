@@ -5,6 +5,14 @@ const {check} = require('../middleware/auth');
 
 const router = express.Router();
 
+// router.get('/ee', (req, res) => {
+//     res.json({
+//         status: true,
+//         message: 'okkkkk'
+//     })
+//     console.log('ttttttttttttttttttttttt');
+// })
+
 // GET /feed/posts
 router.get('/posts', check, feedController.getPosts);
 

@@ -8,8 +8,47 @@ const multer = require('multer');
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
 
-const app = express();
 
+
+
+
+// const fs = require('fs');
+//
+// function someAsyncOperation(callback) {
+//     // Assume this takes 95ms to complete
+//     fs.readFile('/path/to/file', callback);
+// }
+//
+// const timeoutScheduled = Date.now();
+//
+// setTimeout(() => {
+//     const delay = Date.now() - timeoutScheduled;
+//     console.log(`${delay} ms have passed since I was scheduled`);
+// }, 100);
+//
+// // do someAsyncOperation which takes 95 ms to complete
+// someAsyncOperation(() => {
+//     const startCallback = Date.now();
+//     // do something that will take 10ms...
+//     while (Date.now() - startCallback < 10) {
+//         // do nothing
+//     }
+// });
+
+
+// timeout_vs_immediate.js
+setTimeout(() => {
+    console.log('timeout');
+}, 0);
+
+setImmediate(() => {
+    console.log('immediate');
+});
+
+
+
+
+const app = express();
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'images');
@@ -55,9 +94,9 @@ app.use('/auth', authRoutes);
 
 mongoose
     .connect(
-        'mongodb+srv://admin:dW8DeszMwXgUhDfd@realmcluster.uz7xv.mongodb.net/project?retryWrites=true&w=majority', {useNewUrlParser: true,  useUnifiedTopology: true}
+        'mongodb+srv://Artak:csWRb9IZklirXWRh@cluster0.brijr.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true,  useUnifiedTopology: true}
     )
     .then(result => {
-        app.listen(3000);
+        app.listen(3001);
     })
     .catch(err => console.log(err));
