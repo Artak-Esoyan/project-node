@@ -1,17 +1,9 @@
-const express = require('express');
-const { body } = require('express-validator');
-const feedController = require('../controllers/feed');
-const {check} = require('../middleware/auth');
+const express = require('express')
+const { body } = require('express-validator')
+const feedController = require('../controllers/feed')
+const {check} = require('../middleware/auth')
 
 const router = express.Router();
-
-// router.get('/ee', (req, res) => {
-//     res.json({
-//         status: true,
-//         message: 'okkkkk'
-//     })
-//     console.log('ttttttttttttttttttttttt');
-// })
 
 // GET /feed/posts
 router.get('/posts', check, feedController.getPosts);
@@ -36,7 +28,7 @@ router.post('/update/:postId', [
     body('content')
         .trim()
         .isLength({min: 5 })
-], check, feedController.updatePost, );
+], check, feedController.updatePost);
 
 
 router.post('/delete/:postId', check, feedController.deletePost);

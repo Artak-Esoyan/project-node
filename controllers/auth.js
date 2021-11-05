@@ -1,10 +1,10 @@
 //validation
-const { validationResult} = require('express-validator');
+const { validationResult} = require('express-validator')
 // hashavorel
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs')
 //token
-const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
 
 
 exports.signup = async (req, res, next) => {
