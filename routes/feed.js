@@ -22,14 +22,19 @@ router.post('/post', [
 
 // update post
 router.post('/update/:postId', [
-    body('title')
-        .trim()
-        .isLength({min: 5 }),
+    body('title'),
     body('content')
-        .trim()
-        .isLength({min: 5 })
-], check, feedController.updatePost);
+], feedController.updatePost);
 
+// old
+// router.post('/update/:postId', [
+//     body('title')
+//         .trim()
+//         .isLength({min: 5 }),
+//     body('content')
+//         .trim()
+//         .isLength({min: 5 })
+// ], check, feedController.updatePost);
 
 router.post('/delete/:postId', check, feedController.deletePost);
 

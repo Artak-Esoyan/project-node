@@ -6,7 +6,6 @@ const User = require('../models/user');
 
 
 exports.getPosts = async (req, res, next) => {
-    // console.log(222222222222, req.params.id);
     const currentPage = 1;
     const perPage = 4;
     try {
@@ -90,7 +89,7 @@ exports.createPost = async (req, res, next) => {
 
 
 exports.updatePost = async (req, res, next) => {
-    const postId = req.body.id;
+    const postId = req.params.postId;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -109,14 +108,14 @@ exports.updatePost = async (req, res, next) => {
             })
     }
     try {
-        const post = await Post.findById(postId);
+    const post = await Post.findById(postId);
         if (!post) {
             return res.status(404).json({
                 message: 'Could not find post.',
             });
         }
 
-        if (post.creator.toString() !== req.userId) {
+        if (post.creator.toString() !== req.body.userId) {
             return res.status(403).json({
                 message: 'Not authorized!',
             });
@@ -130,17 +129,18 @@ exports.updatePost = async (req, res, next) => {
         const result = await post.save();
         res.status(200).json({
             message: 'Post updated!',
-            post: result });
+            post: result
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: 'uneq sxal',
+            message: 'incorrect update',
         })
     }
 };
 
 exports.deletePost = async (req, res, next) => {
-    const postId = req.body.id;
+    const postId = req.params.postId;
     try {
         const post = await Post.findById(postId);
         if (!post) {

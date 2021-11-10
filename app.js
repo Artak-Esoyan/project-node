@@ -58,6 +58,6 @@ mongoose
         'mongodb+srv://Artak:csWRb9IZklirXWRh@cluster0.brijr.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true,  useUnifiedTopology: true}
     )
     .then(result => {
-        app.listen(3001);
+        app.listen(3000);
     })
     .catch(err => console.log(err));
