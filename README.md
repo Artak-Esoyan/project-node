@@ -1,10 +1,10 @@
-# connect db
 # project-node
 # open postman
 # route: http://localhost:3001/auth/signup
-# 1) create user: name, email, password
-# 2) login - email: test@gmail.com, pass: test123
-# 3) create posts 
+# 1) connect db
+# 2) create user: name, email, password
+# 3) login - email: test@gmail.com, pass: test123
+# 4) create posts 
 [comment]: <> (bodyParser: urlencoded, ogtagorcum enq jsonov ekac fileri het)
 [comment]: <> (multer: fileri het ashxatelu hamar enq ogtagorcum, or ` image uplade)
 [comment]: <> (authRoutes - route cuyc e talis uxutyuny,  authController - katarum e tvyal functionaly)
