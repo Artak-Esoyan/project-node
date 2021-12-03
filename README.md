@@ -1,3 +1,4 @@
+# connect db
 # project-node
 # open postman
 # route: http://localhost:3001/auth/signup
